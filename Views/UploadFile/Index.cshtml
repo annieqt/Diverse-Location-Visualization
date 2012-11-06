@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Test1.Models.Algorithm>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>Upload Algorithm files and dataset files</h1>
+<br/><br/>
+
+<p>
+    Upload an algorithm file(.mat)：
+</p>
+
+@using (Html.BeginForm("uploadAlgorithm", "UploadFile", FormMethod.Post, new {enctype="multipart/form-data"})) 
+   {
+     <input type="file" name="FileUploada" />
+    <br/>
+     <input type="submit" name="Submit" id="submita" value="Upload" />
+ }
+<br/>
+
+<p>
+    Upload a dataset file：
+</p>
+@using (Html.BeginForm("uploadDataset", "UploadFile", FormMethod.Post, new {enctype="multipart/form-data"})) 
+   {
+     <input type="file" name="FileUploadd" />
+    <br/>
+     <input type="submit" name="Submit" id="submitd" value="Upload" />
+ }
+<br/>
+<br/>
+<br/>
+
+<p>
+   Existing algorithms &datasets mapping: 
+</p> 
+
+<table>
+    <tr>
+        <th>
+            name
+        </th>
+        <th>
+            dir
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dir)
+        </td>
+        <td>
+            @Html.ActionLink("Details and Edit", "Details", new { id=item.algorithmId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.algorithmId })
+        </td>
+    </tr>
+}
+
+</table>

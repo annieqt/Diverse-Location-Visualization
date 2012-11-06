@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Selecting Algorithms and corresponding Dataset Files</h2>
+
+@using (Html.BeginForm("StartUse", "Use"))
+{
+<p>
+    Please select the algorithm you want to use:
+     
+    @Html.DropDownList("als", String.Empty)
+
+</p>
+
+<p>
+    Please select the dataset you want to use:
+     
+    @Html.DropDownList("datas", String.Empty)
+
+</p>
+
+<p>
+            <input type="submit" value="submit" />
+</p>
+    
+}
